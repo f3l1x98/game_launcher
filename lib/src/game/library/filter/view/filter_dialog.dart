@@ -144,19 +144,6 @@ class _IncludedGenresInput extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.includedGenres != current.includedGenres,
       builder: (context, state) {
-        /*return StyledMultiSelectDialogField<GenreModel>(
-          dropdownHint: "Select included genres",
-          dialogTitle: "Select included genres",
-          items: (state as FilterLoaded)
-              .genres
-              .map((genre) => MultiSelectItem(genre, genre.name))
-              .toList(),
-          searchHint: "Genre",
-          initialValue: state.includedGenres.value,
-          onConfirm: (items) {
-            context.read<FilterBloc>().add(FilterIncludedGenresChanged(items));
-          },
-        );*/
         return DropdownSearch<GenreModel>.multiSelection(
           compareFn: (item1, item2) => item1 == item2,
           itemAsString: (item) => item.name,
@@ -196,19 +183,6 @@ class _ExcludedGenresInput extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.excludedGenres != current.excludedGenres,
       builder: (context, state) {
-        /*return StyledMultiSelectDialogField<GenreModel>(
-          dropdownHint: "Select excluded genres",
-          dialogTitle: "Select excluded genres",
-          items: (state as FilterLoaded)
-              .genres
-              .map((genre) => MultiSelectItem(genre, genre.name))
-              .toList(),
-          searchHint: "Genre",
-          initialValue: state.excludedGenres.value,
-          onConfirm: (items) {
-            context.read<FilterBloc>().add(FilterExcludedGenresChanged(items));
-          },
-        );*/
         return DropdownSearch<GenreModel>.multiSelection(
           compareFn: (item1, item2) => item1 == item2,
           itemAsString: (item) => item.name,
@@ -245,15 +219,6 @@ class _InstalledOnlyInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<FilterBloc, FilterState>(
       builder: (context, state) {
-        /*return InputDecorator(
-          decoration: const InputDecoration.collapsed(hintText: "Test"),
-          child: Switch(
-            value: state.installedOnly.value,
-            onChanged: (newValue) => context
-                .read<FilterBloc>()
-                .add(FilterInstalledOnlyChanged(newValue)),
-          ),
-        );*/
         return SwitchListTile(
           title: const Text("Installed only"),
           value: state.installedOnly.value,
@@ -262,19 +227,5 @@ class _InstalledOnlyInput extends StatelessWidget {
         );
       },
     );
-    /*return FormBuilderSwitch(
-      name: 'installedOnly',
-      decoration: const InputDecoration(
-        border: InputBorder.none,
-      ),
-      title: const Text("Installed only"),
-      // TODO use state
-      initialValue: context.read<GameDatabaseRepository>().installedOnly,
-      onChanged: (newValue) {
-        if (newValue != null) {
-          context.read<FilterBloc>().add(FilterInstalledOnlyChanged(newValue));
-        }
-      },
-    );*/
   }
 }

@@ -1,8 +1,5 @@
 import 'package:database_repository/database_repository.dart';
-import 'package:database_repository/src/games/game_model.dart';
-import 'package:database_repository/src/shared/database_repository.dart';
 import 'package:database_repository/src/shared/exceptions/not_found_exception.dart';
-import 'package:database_repository/src/shared/sorting_enum.dart';
 import 'package:rxdart/rxdart.dart';
 
 class GameDatabaseRepository extends DatabaseRepository<GameModel> {

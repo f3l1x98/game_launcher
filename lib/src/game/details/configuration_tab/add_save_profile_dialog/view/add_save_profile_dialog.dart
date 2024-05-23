@@ -3,6 +3,7 @@ import 'package:files_repository/files_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:game_launcher/src/game/details/configuration_tab/add_save_profile_dialog/cubit/add_save_profile_cubit.dart';
+import 'package:go_router/go_router.dart';
 
 class AddSaveProfileDialog extends StatelessWidget {
   final GameModel game;
@@ -16,18 +17,6 @@ class AddSaveProfileDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*return Dialog(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SizedBox(
-          width: 200.0,
-          child: Form(
-            key: _formKey,
-            child: _AddSaveProfileContent(),
-          ),
-        ),
-      ),
-    );*/
     return Dialog(
       child: Container(
         padding: const EdgeInsets.all(20.0),
@@ -65,37 +54,7 @@ class _AddSaveProfileContent extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 5.0),
-        // TODO DECIDE WHETHER TO USE formz, bloc, flutter_form_builder AND/OR reactive_forms
-        //  -> Could use just flutter_form_builder
-        //  -> https://bloclibrary.dev/tutorials/flutter-login/#login uses formz + bloc + textField -> DOES NOT USE FORMS
-        //  -> SEE Filter FOR formz + bloc
-        //  -> Could use reactive_forms and store the form inside a bloc (bloc not bloc state) -> separates business logic
-        //    -> TODO Johann suggests formz (does not like accessing values using harcoded strings like reactive_forms and flutter_form_builder do)
-        // TODO Strictly speaking this maintains its own state -> bloc unnecessary
-        //  HOWEVER: bloc would serve to extract buisness logic for creating save profile into separate file
-        /*FormBuilderTextField(
-          name: 'profile_name',
-          expands: false,
-          decoration: const InputDecoration(
-            isDense: true,
-            hintText: "Profile name",
-          ),
-          validator: FormBuilderValidators.compose([
-            FormBuilderValidators.required(),
-            (value) {
-              if (saveProfiles.any((profile) => profile.name == value)) {
-                return "Name already used!";
-              }
-              return null;
-            }
-          ]),
-        ),*/
         _NameInput(),
-        /*FormBuilderSwitch(
-          name: 'copy_current',
-          title: const Text("Copy current savefiles"),
-          initialValue: false,
-        ),*/
         const _CopyCurrentInput(),
         const SizedBox(height: 10.0),
         Row(
@@ -107,18 +66,10 @@ class _AddSaveProfileContent extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                context.read<AddSaveProfileCubit>().createSaveProfile();
-                // TODO old impl had provider.isLoading to disable this btn -> DO I STILL NEED THIS?!?!?!
-                /*if (_formKey.currentState?.saveAndValidate() ?? false) {
-                  _createSaveProfile(
-                    context: context,
-                    game: game,
-                    name: _formKey.currentState?.value['profile_name'],
-                    prefillWithCurrent:
-                        _formKey.currentState?.value['copy_current'],
-                  );
-                  Navigator.of(context).pop();
-                }*/
+                context
+                    .read<AddSaveProfileCubit>()
+                    .createSaveProfile()
+                    .then((value) => context.pop());
               },
               child: const Text("Add"),
             )
