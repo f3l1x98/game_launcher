@@ -213,16 +213,21 @@ class _GameDetailsHeader extends StatelessWidget {
     return Stack(
       children: [
         Center(
-          child: Image.file(
-            context
-                .read<FilesRepository>()
-                .getFile(detailsState.game.coverPath ?? ""),
-            errorBuilder: (context, error, stackTrace) => Image.asset(
-              "assets/images/image_not_found.jpg",
-              filterQuality: FilterQuality.high,
-            ),
-            filterQuality: FilterQuality.high,
-          ),
+          child: detailsState.game.coverPath != null
+              ? Image.file(
+                  context
+                      .read<FilesRepository>()
+                      .getFile(detailsState.game.coverPath ?? ""),
+                  errorBuilder: (context, error, stackTrace) => Image.asset(
+                    "assets/images/image_not_found.jpg",
+                    filterQuality: FilterQuality.high,
+                  ),
+                  filterQuality: FilterQuality.high,
+                )
+              : Image.asset(
+                  "assets/images/image_not_found.jpg",
+                  filterQuality: FilterQuality.high,
+                ),
         ),
         Positioned(
           bottom: 0.0,

@@ -24,13 +24,15 @@ class GameCardWidget extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned.fill(
-                  child: Image.file(
-                    context
-                        .read<FilesRepository>()
-                        .getFile(game.coverPath ?? ""),
-                    errorBuilder: (context, error, stackTrace) =>
-                        Image.asset("assets/images/image_not_found.jpg"),
-                  ),
+                  child: game.coverPath != null
+                      ? Image.file(
+                          context
+                              .read<FilesRepository>()
+                              .getFile(game.coverPath!),
+                          errorBuilder: (context, error, stackTrace) =>
+                              Image.asset("assets/images/image_not_found.jpg"),
+                        )
+                      : Image.asset("assets/images/image_not_found.jpg"),
                 ),
                 Positioned(
                   bottom: 0.0,
