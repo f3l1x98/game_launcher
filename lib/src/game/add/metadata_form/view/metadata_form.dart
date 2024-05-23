@@ -122,7 +122,6 @@ class _ExePathInput extends StatelessWidget {
           current.exePath.value != _controller.text,
       listener: (context, state) {
         _controller.text = state.exePath.value ?? "";
-        print("_ExePathInput listener ${_controller.text}");
       },
       buildWhen: (previous, current) =>
           previous.exePath != current.exePath ||
@@ -158,7 +157,6 @@ class _SavePathInput extends StatelessWidget {
           current.savePath.value != _controller.text,
       listener: (context, state) {
         _controller.text = state.savePath.value ?? "";
-        print("_SavePathInput listener ${_controller.text}");
       },
       buildWhen: (previous, current) =>
           previous.savePath != current.savePath ||
