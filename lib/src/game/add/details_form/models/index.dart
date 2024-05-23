@@ -1,0 +1,10 @@
+export 'description.dart';
+export 'developers.dart';
+export 'genres.dart';
+export 'language.dart';
+export 'name.dart';
+export 'prequel.dart';
+export 'sequel.dart';
+export 'version.dart';
+export 'voting.dart';
+export 'website.dart';

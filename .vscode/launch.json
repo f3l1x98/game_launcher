@@ -1,0 +1,61 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "game_launcher",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "game_launcher (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "game_launcher (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "database_data_layer",
+            "cwd": "packages\\database_data_layer",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "database_repository",
+            "cwd": "packages\\database_repository",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "files_repository",
+            "cwd": "packages\\files_repository",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "game_engine_repository",
+            "cwd": "packages\\game_engine_repository",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "settings_data_layer",
+            "cwd": "packages\\settings_data_layer",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "settings_repository",
+            "cwd": "packages\\settings_repository",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}

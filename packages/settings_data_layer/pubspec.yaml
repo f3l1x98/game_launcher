@@ -1,0 +1,19 @@
+name: settings_data_layer
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.2.3
+
+# Add regular dependencies here.
+dependencies:
+  rxdart: ^0.27.7
+  rx_shared_preferences: ^3.1.0
+  json_annotation: ^4.8.1
+
+dev_dependencies:
+  lints: ^3.0.0
+  test: ^1.24.0
+  build_runner: ^2.4.9
+  json_serializable: ^6.7.1
