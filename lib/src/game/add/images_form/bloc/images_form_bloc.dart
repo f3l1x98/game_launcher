@@ -33,7 +33,6 @@ class ImagesFormBloc extends Bloc<ImagesFormEvent, ImagesFormState> {
     Emitter<ImagesFormState> emit,
   ) async {
     try {
-      // TODO does not work (at least no UI update)
       var result = await FilePicker.platform.getDirectoryPath();
       if (result != null) {
         var files = await Directory(result)

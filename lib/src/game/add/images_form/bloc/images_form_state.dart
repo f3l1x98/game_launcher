@@ -5,7 +5,7 @@ final class ImagesFormState extends Equatable {
     this.status = FormzSubmissionStatus.initial,
     this.cover = const Cover.pure(),
     this.images = const Images.pure(),
-    this.isValid = false,
+    this.isValid = true,
   });
 
   final FormzSubmissionStatus status;
