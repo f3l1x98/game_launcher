@@ -5,6 +5,7 @@ import 'package:formz/formz.dart';
 import 'package:game_launcher/src/game/add/cubit/add_cubit.dart';
 import 'package:game_launcher/src/game/add/images_form/bloc/images_form_bloc.dart';
 import 'package:game_launcher/src/shared/select_image/view/select_image.dart';
+import 'package:go_router/go_router.dart';
 
 class ImagesForm extends StatelessWidget {
   const ImagesForm({super.key});
@@ -153,7 +154,7 @@ class _CancelButton extends StatelessWidget {
             ? const SizedBox.shrink()
             : TextButton(
                 onPressed: () => context.read<AddCubit>().stepCancelled(),
-                child: const Text('Cancel'),
+                child: const Text('Back'),
               );
       },
     );
@@ -167,7 +168,7 @@ class _SubmitButton extends StatelessWidget {
       listenWhen: (previous, current) => previous.status != current.status,
       listener: (context, state) {
         if (state.status.isSuccess) {
-          context.read<AddCubit>().stepContinued();
+          context.pop();
         }
       },
       buildWhen: (previous, current) =>
@@ -181,7 +182,7 @@ class _SubmitButton extends StatelessWidget {
                 onPressed: state.isValid
                     ? () => context.read<ImagesFormBloc>().add(FormSubmitted())
                     : null,
-                child: const Text('Next'),
+                child: const Text('Create'),
               );
       },
     );

@@ -103,6 +103,8 @@ class ImagesFormBloc extends Bloc<ImagesFormEvent, ImagesFormState> {
           cover: state.cover.value,
           images: state.images.value,
         );
+        await _gameDatabaseRepository
+            .insert(_gameDatabaseRepository.creationGame);
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } catch (_) {
         emit(state.copyWith(status: FormzSubmissionStatus.failure));
