@@ -71,11 +71,9 @@ class _MarkdownEditorContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // TODO THIS HEIGHT GETS IGNORED
       height: height ?? 100.0,
       child: BlocBuilder<MarkdownEditorCubit, MarkdownEditorState>(
         builder: (context, state) {
-          print("MarkdownEditorCubit REBUILD");
           if (state is MarkdownEditorInitial) {
             return const Center(
               child: CircularProgressIndicator(),

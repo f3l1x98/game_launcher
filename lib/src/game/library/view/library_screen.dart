@@ -76,7 +76,6 @@ class _LibraryScreenContent extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                print("TODO");
                 // Dialog for selecting archive of game
                 showDialog(
                   context: context,

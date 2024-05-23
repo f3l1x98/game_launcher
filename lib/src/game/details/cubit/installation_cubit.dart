@@ -52,7 +52,6 @@ class InstallationCubit extends Cubit<InstallationState> {
 
   Future<void> install() async {
     assert(state is! InstallationRunning);
-    print("TODO (in this case test)");
     Progress progress = Progress(
       name: "Install ${_game.name}",
       max: 3,
@@ -60,16 +59,6 @@ class InstallationCubit extends Cubit<InstallationState> {
     );
     _progressRepository.upsertProgress(progress);
     emit(InstallationRunning(progressId: progress.id));
-    await Future.delayed(Duration(seconds: 1));
-    progress = Progress.advanceBase(base: progress);
-    _progressRepository.upsertProgress(progress);
-    await Future.delayed(Duration(seconds: 1));
-    progress = Progress.advanceBase(base: progress);
-    _progressRepository.upsertProgress(progress);
-    await Future.delayed(Duration(seconds: 1));
-    progress = Progress.advanceBase(base: progress);
-    _progressRepository.upsertProgress(progress);
-    return;
     Directory? gameTmpDir;
     try {
       // TODO SPLIT INTO SEPARATE METHODS
@@ -209,7 +198,6 @@ class InstallationCubit extends Cubit<InstallationState> {
 
   Future<void> uninstall() async {
     assert(state is! InstallationRunning);
-    print("TODO");
 
     try {
       // TODO SPLIT INTO SEPARATE METHODS
@@ -288,8 +276,6 @@ class InstallationCubit extends Cubit<InstallationState> {
     bool copyCurrentSave = false,
   }) async {
     assert(state is! InstallationRunning);
-    print("TODO");
-    throw UnimplementedError();
 
     if (!_game.installed) {
       return;

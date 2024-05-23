@@ -45,7 +45,7 @@ class AddCubit extends Cubit<AddState> {
         return;
       }
     }
-    await analyzingTmpDir.create();
+    await analyzingTmpDir.create(recursive: true);
     if (isClosed) return;
     // Extract archive to tmp
     var archivingProcess = await _archivesRepository.extractArchive(
@@ -62,7 +62,6 @@ class AddCubit extends Cubit<AddState> {
       // Failed to detect engine -> popup for user that asks whether he wants to select root of game (in case wrapperDirs caused this)
       // TODO -> unable to use GameModel due to it not allowing partial -> create new model
       // TODO update form data in gameDatabaseRepository
-      print("Update");
       _gameDatabaseRepository.updateAnalysisResult(
         gamePath: analysisResult.absoluteGamePath,
         name: analysisResult.name,
