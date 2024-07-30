@@ -2,7 +2,7 @@
 A game launcher for Windows.
 This resulted from a curiosity of mine about how one can start new processes using Dart.
 
-**Currently WIP**
+**Currently WIP (refactoring of older implementation)**
 
 # Features
 - Uses 7zip for (de)installation of games
