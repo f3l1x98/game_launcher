@@ -36,7 +36,6 @@ class _HomePageContent extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // TODO <a href="https://www.freepik.com/free-photo/solid-concrete-wall-textured-backdrop_17839221.htm#query=dark%20background&position=3&from_view=keyword&track=robertav1_2_sidr">Image by rawpixel.com</a> on Freepik
           Image.asset(
             "assets/images/background.jpg",
             filterQuality: FilterQuality.high,
